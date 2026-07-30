@@ -1,0 +1,35 @@
+name: "<gradient:#4F64FF:#7300FF>震击"
+max_level: 5
+anvil_cost: 2
+enchanting_table:
+  enabled: true
+  chance: 0.01
+  min_cost: 30
+  max_cost: 30
+villager_trades:
+  enabled: false
+  chance: 0.01
+  treasure: true
+applicable_items: MACE
+trigger: RIGHT_CLICK
+target: ALL_ENTITIES
+cooldown: 30000
+sound:
+  type: item.totem.use	  # Minecraft sound registry name (lowercase, underscored)
+  volume: 1.0                          # Volume (0.0 - 1.0)
+  pitch: 0.5                           # Pitch (0.5 - 2.0)
+particle:
+  type: explosion_emitter                  # Particle enum name (UPPERCASE)
+  count: 5                   # Number of particles
+  spread: 0.5                 # Spread radius
+  speed: 1.0                  # Particle speed
+  location: TARGET            # Where to spawn: SELF, TARGET, or BLOCK
+actions:
+  push:
+    type: shockwave
+    radius:
+      base: 5.0
+      per_level: 1.0
+    power:
+      base: 2.0
+      per_level: 1.0

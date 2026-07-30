@@ -1,0 +1,34 @@
+name: "<gradient:#E600FF:#A436FF>闪现"
+max_level: 5
+anvil_cost: 2
+enchanting_table:
+  enabled: true
+  chance: 0.01
+  min_cost: 30
+  max_cost: 30
+villager_trades:
+  enabled: false
+  chance: 0.01
+  treasure: true
+applicable_items: SWORDS
+trigger: RIGHT_CLICK
+target: SELF
+cooldown: 5000
+conflicts:
+  - meowsenchants:leap
+sound:
+  type: block.beacon.activate
+  volume: 1.0                          # Volume (0.0 - 1.0)
+  pitch: 2.0                           # Pitch (0.5 - 2.0)
+particle:
+  type: END_ROD                    # 末地烛白色光粒
+  count: 40
+  spread: 0.8                      # 更大的扩散范围，形成爆发感
+  speed: 0.2
+  location: TARGET           # Where to spawn: SELF, TARGET, or BLOCK
+actions:
+  blink:
+    type: teleport
+    range:
+      base: 5.0
+      per_level: 2.0

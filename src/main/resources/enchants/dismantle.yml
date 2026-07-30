@@ -1,0 +1,28 @@
+name: "<gradient:#FF0000:#AB003F>锯裂"
+max_level: 3
+anvil_cost: 2
+enchanting_table:
+  enabled: true
+  chance: 0.01
+  min_cost: 30
+  max_cost: 30
+villager_trades:
+  enabled: false
+  chance: 0.01
+  treasure: true
+applicable_items: WEAPON
+trigger: ATTACK_ENTITY
+target: PLAYERS
+cooldown: 3000
+particle:
+  type: ominous_spawning
+  count: 5
+  spread: 0.5
+  speed: 1.0
+  location: TARGET            # Where to spawn: SELF, TARGET, or BLOCK
+actions:
+  break:
+    type: break_armor
+    damage:
+      base: 10
+      per_level: 10

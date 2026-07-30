@@ -1,0 +1,26 @@
+name: "<gradient:#F76700:red>易爆"
+max_level: 5
+anvil_cost: 2
+enchanting_table:
+  enabled: true
+  chance: 0.01
+  min_cost: 30
+  max_cost: 30
+villager_trades:
+  enabled: false
+  chance: 0.01
+  treasure: true
+applicable_items: RANGED
+trigger: PROJECTILE_HIT
+target: MOBS
+cooldown: 5000
+conflicts:
+  - meowsenchants:entangle
+actions:
+  boom:
+    type: explosion
+    power:
+      base: 1.0
+      per_level: 1.0
+    fire: false
+    break_blocks: false

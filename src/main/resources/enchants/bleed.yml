@@ -1,0 +1,42 @@
+name: "<gradient:#FF0000:#C72A2A>流血刃"
+max_level: 3
+anvil_cost: 2
+enchanting_table:
+  enabled: true
+  chance: 0.01
+  min_cost: 30
+  max_cost: 30
+villager_trades:
+  enabled: false
+  chance: 0.01
+  treasure: true
+applicable_items: SHARP_WEAPON
+trigger: ATTACK_ENTITY
+target: ALL_ENTITIES
+cooldown: 1000
+conflicts:
+  - meowsenchants:freeze
+sound:
+  type: entity.player.attack.strong
+  volume: 1.0
+  pitch: 1.0
+particle:
+  type: dust_pillar
+  count: 20
+  spread: 0.6
+  speed: 0.01
+  location: TARGET
+  data:
+    material: "minecraft:redstone_block"
+actions:
+  bleed:
+    type: potion_effect
+    effect: wither
+    duration:
+      base: 20
+      per_level: 20
+    amplifier:
+      base: 0
+      per_level: 1
+    particles: false
+    icon: false

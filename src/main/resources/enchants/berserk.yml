@@ -1,0 +1,38 @@
+name: "<gradient:#C90000:#FF3300>狂战士"
+max_level: 3
+anvil_cost: 2
+enchanting_table:
+  enabled: true
+  chance: 0.01
+  min_cost: 30
+  max_cost: 30
+villager_trades:
+  enabled: false
+  chance: 0.01
+  treasure: true
+applicable_items: AXES
+trigger: TAKE_DAMAGE
+target: SELF
+cooldown: 5000
+sound:
+  type: entity.warden.roar       # 爆炸性咆哮，最具冲击力
+  volume: 0.5
+  pitch: 0.5
+particle:
+  type: flame
+  count: 15
+  spread: 0.5
+  speed: 0.01
+  location: SELF
+actions:
+  rage:
+    type: potion_effect
+    effect: strength
+    duration:
+      base: 20
+      per_level: 20
+    amplifier:
+      base: 0
+      per_level: 1
+    particles: false
+    icon: false

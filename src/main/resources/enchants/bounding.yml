@@ -1,0 +1,34 @@
+name: "<gradient:#00FFC3:#00FF40>助跑跳"
+max_level: 3
+anvil_cost: 2
+enchanting_table:
+  enabled: true
+  chance: 0.01
+  min_cost: 30
+  max_cost: 30
+villager_trades:
+  enabled: false
+  chance: 0.01
+  treasure: true
+applicable_items: BOOTS
+trigger: SPRINT_HOLD
+target: SELF
+cooldown: 1000
+particle:
+  type: ITEM_SLIME              # 史莱姆专用粒子
+  count: 15                     # 弹跳时喷出适量粒子
+  spread: 0.6                   # 稍大的扩散半径，模拟溅射
+  speed: 0.1                    # 速度适中
+  location: SELF                # 在玩家自身位置生成
+actions:
+  bounce:
+    type: potion_effect
+    effect: jump_boost
+    duration:
+      base: 20
+      per_level: 20
+    amplifier:
+      base: 0
+      per_level: 1
+    particles: false
+    icon: false

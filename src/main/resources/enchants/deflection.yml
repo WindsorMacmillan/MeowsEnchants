@@ -1,0 +1,34 @@
+name: "<gradient:#75A5FF:#A175FF>偏转"
+max_level: 3
+anvil_cost: 2
+enchanting_table:
+  enabled: true
+  chance: 0.01
+  min_cost: 30
+  max_cost: 30
+villager_trades:
+  enabled: false
+  chance: 0.01
+  treasure: true
+applicable_items: ARMOR
+trigger: TAKE_DAMAGE
+target: SELF
+cooldown: 4000
+conflicts:
+  - meowsenchants:damage_charge
+sound:
+  type: item.shield.block  # Minecraft sound registry name (lowercase, underscored)
+  volume: 0.5                          # Volume (0.0 - 1.0)
+  pitch: 1.0                           # Pitch (0.5 - 2.0)
+particle:
+  type: sweep_attack
+  count: 10
+  spread: 0.5
+  speed: 1.0
+  location: SELF
+actions:
+  block:
+    type: deflect
+    amount:
+      base: 0.2
+      per_level: 0.2

@@ -1,0 +1,40 @@
+name: "<gradient:#995EFF:#D900FF>吸收充能"
+max_level: 1
+anvil_cost: 2
+enchanting_table:
+  enabled: true
+  chance: 0.01
+  min_cost: 30
+  max_cost: 30
+villager_trades:
+  enabled: false
+  chance: 0.01
+  treasure: true
+applicable_items: ARMOR
+trigger: TAKE_DAMAGE
+target: SELF
+cooldown: 30000
+conflicts:
+  - meowsenchants:deflection
+sound:
+  type: block.respawn_anchor.charge
+  volume: 0.5
+  pitch: 1.0
+particle:
+  type: reverse_portal
+  count: 15
+  spread: 0.5
+  speed: 0.1
+  location: SELF
+actions:
+  obsorbtion:
+    type: potion_effect
+    effect: absorption
+    duration:
+      base: 200
+      per_level: 200
+    amplifier:
+      base: 0
+      per_level: 1
+    particles: false
+    icon: false

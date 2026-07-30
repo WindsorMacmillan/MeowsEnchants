@@ -1,0 +1,53 @@
+name: "<gradient:#00FFFF:#8FCEFF>冰霜刃"
+max_level: 3
+anvil_cost: 2
+enchanting_table:
+  enabled: true
+  chance: 0.01
+  min_cost: 30
+  max_cost: 30
+villager_trades:
+  enabled: false
+  chance: 0.01
+  treasure: true
+applicable_items: SHARP_WEAPON
+trigger: ATTACK_ENTITY
+target: ALL_ENTITIES
+cooldown: 4000
+conflicts:
+  - meowsenchants:bleed
+sound:
+  type: entity.player.hurt_freeze
+  volume: 1.0
+  pitch: 0.5
+particle:
+  type: falling_dust
+  count: 15
+  spread: 0.5
+  speed: 0.01
+  location: TARGET
+  data:
+    material: "minecraft:snow_block"
+actions:
+  freeze:
+    type: potion_effect
+    effect: slowness
+    duration:
+      base: 40
+      per_level: 40
+    amplifier:
+      base: 0
+      per_level: 1
+    particles: false
+    icon: false
+  fatigue:
+    type: potion_effect
+    effect: mining_fatigue
+    duration:
+      base: 40
+      per_level: 40
+    amplifier:
+      base: 0
+      per_level: 1
+    particles: false
+    icon: false

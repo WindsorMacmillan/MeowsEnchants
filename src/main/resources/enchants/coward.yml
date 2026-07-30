@@ -1,0 +1,34 @@
+name: "<gradient:#00F7FF:#00FFC3>闪遁"
+max_level: 3
+anvil_cost: 2
+enchanting_table:
+  enabled: true
+  chance: 0.01
+  min_cost: 30
+  max_cost: 30
+villager_trades:
+  enabled: false
+  chance: 0.01
+  treasure: true
+applicable_items: HELMETS
+trigger: TAKE_DAMAGE
+target: SELF
+cooldown: 2000
+particle:
+  type: soul
+  count: 15
+  spread: 0.6
+  speed: 0.1
+  location: SELF
+actions:
+  flee:
+    type: potion_effect
+    effect: speed
+    duration:
+      base: 40
+      per_level: 20
+    amplifier:
+      base: 0
+      per_level: 1
+    particles: false
+    icon: false

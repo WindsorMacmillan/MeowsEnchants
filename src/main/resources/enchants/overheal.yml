@@ -1,0 +1,34 @@
+name: "<gradient:#FFA600:#BA3E00>厚实表皮"
+max_level: 2
+anvil_cost: 2
+enchanting_table:
+  enabled: true
+  chance: 0.01
+  min_cost: 30
+  max_cost: 30
+villager_trades:
+  enabled: false
+  chance: 0.01
+  treasure: true
+applicable_items: HELMETS
+trigger: PASSIVE
+target: SELF
+cooldown: 30000
+particle:
+  type: trial_spawner_detection
+  count: 8
+  spread: 0.5
+  speed: 0.1
+  location: SELF
+actions:
+  absorb:
+    type: potion_effect
+    effect: absorption
+    duration:
+      scaling: fixed
+      value: 600
+    amplifier:
+      base: 0
+      per_level: 1
+    particles: false
+    icon: false

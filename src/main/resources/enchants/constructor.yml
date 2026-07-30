@@ -1,0 +1,28 @@
+name: "<gradient:#FFB300:#A2FF00>速建速拆"
+max_level: 3
+anvil_cost: 2
+enchanting_table:
+  enabled: true
+  chance: 0.01
+  min_cost: 30
+  max_cost: 30
+villager_trades:
+  enabled: false
+  chance: 0.01
+  treasure: true
+applicable_items: TOOLS
+trigger: BLOCK_PLACE
+target: SELF
+cooldown: 1000
+actions:
+  hasteup:
+    type: potion_effect
+    effect: haste
+    duration:
+      base: 20
+      per_level: 20
+    amplifier:
+      base: 0
+      per_level: 1
+    particles: false
+    icon: false

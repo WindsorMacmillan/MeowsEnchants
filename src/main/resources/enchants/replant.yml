@@ -1,0 +1,30 @@
+name: "<gradient:#DDFF00:#00FF00>催熟补种"
+max_level: 1
+anvil_cost: 2
+enchanting_table:
+  enabled: true
+  chance: 0.01
+  min_cost: 30
+  max_cost: 30
+villager_trades:
+  enabled: false
+  chance: 0.01
+  treasure: true
+applicable_items: HOES
+trigger: BLOCK_BREAK
+target: SELF
+cooldown: 0
+sound:
+  type: item.crop.plant
+  volume: 0.5
+  pitch: 1.0
+particle:
+  type: glow
+  count: 8
+  spread: 0.5
+  speed: 0.1
+  location: BLOCK
+actions:
+  plant:
+    type: replant
+    fertilizer: true

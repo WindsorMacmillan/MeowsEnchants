@@ -1,0 +1,32 @@
+name: "<gradient:#FF0000:#FF0062>生命偷取"
+max_level: 3
+anvil_cost: 2
+enchanting_table:
+  enabled: true
+  chance: 0.01
+  min_cost: 30
+  max_cost: 30
+villager_trades:
+  enabled: false
+  chance: 0.01
+  treasure: true
+applicable_items: WEAPON
+trigger: ATTACK_ENTITY
+target: ALL_ENTITIES
+cooldown: 1000
+sound:
+  type: entity.bat.ambient
+  volume: 0.3
+  pitch: 0.5
+particle:
+  type: witch
+  count: 5
+  spread: 0.5
+  speed: 1.0
+  location: SELF
+actions:
+  steal:
+    type: healthsteal
+    amount:
+      base: 0.1
+      per_level: 0.1

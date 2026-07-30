@@ -1,0 +1,11 @@
+name: MeowsEnchants
+description: 'Custom Enchantments for Meows Realm Server'
+prefix: MeowsEnchant
+version: '${version}'
+main: com.windsor.meowsEnchants.MeowsEnchants
+bootstrapper: com.windsor.meowsEnchants.MeowsEnchantsBootstrap
+api-version: '1.21.11'
+load: STARTUP
+folia-supported: true
+
+authors: [ Windsor_Macmillan ]

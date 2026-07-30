@@ -1,0 +1,29 @@
+name: "<gradient:#AAFF00:#00C900>自动修补"
+max_level: 3
+anvil_cost: 2
+enchanting_table:
+  enabled: true
+  chance: 0.01
+  min_cost: 30
+  max_cost: 30
+villager_trades:
+  enabled: false
+  chance: 0.01
+  treasure: true
+applicable_items: ENCHANTABLE
+trigger: PASSIVE
+target: SELF
+cooldown: 1000
+particle:
+  type: WAX_ON
+  count: 8
+  spread: 0.5
+  speed: 0.2                     # 极慢速度，让粒子在装备周围漂浮
+  location: SELF                  # 在玩家身上播放
+actions:
+  restore:
+    type: repair
+    amount:
+      base: 0.4
+      per_level: 0.2
+    exp_mode: true

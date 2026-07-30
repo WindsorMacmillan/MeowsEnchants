@@ -1,0 +1,29 @@
+name: "<gradient:#00FFFF:#70CBFF>速度"
+max_level: 3
+anvil_cost: 2
+enchanting_table:
+  enabled: true
+  chance: 0.01
+  min_cost: 30
+  max_cost: 30
+villager_trades:
+  enabled: false
+  chance: 0.01
+  treasure: true
+applicable_items: BOOTS
+trigger: PASSIVE
+target: SELF
+cooldown: 1000
+conflicts:
+  - minecraft:soul_speed
+actions:
+  speed_mod:
+    type: attribute_modifier
+    attribute: "MOVEMENT_SPEED"
+    amount:
+      base: 0.02
+      per_level: 0.02
+    operation: "ADD_NUMBER"
+    key: "speed"
+    conditions:
+      equipped: true

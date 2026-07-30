@@ -1,0 +1,25 @@
+name: "<gradient:#FFFF00:#F76700>区域挖掘"
+max_level: 2
+anvil_cost: 2
+enchanting_table:
+  enabled: true
+  chance: 0.01
+  min_cost: 30
+  max_cost: 30
+villager_trades:
+  enabled: false
+  chance: 0.01
+  treasure: true
+applicable_items: TOOLS
+trigger: BLOCK_BREAK
+target: SELF
+cooldown: 3000
+actions:
+  excavate:
+    type: multi_break
+    radius:
+      base: 1
+      per_level: 1
+    match_tool: true
+    conditions:
+      sneaking: true

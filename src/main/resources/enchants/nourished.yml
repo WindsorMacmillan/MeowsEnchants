@@ -1,0 +1,34 @@
+name: "<gradient:#00FF2F:#A2FF00>铁胃"
+max_level: 3
+anvil_cost: 2
+enchanting_table:
+  enabled: true
+  chance: 0.01
+  min_cost: 30
+  max_cost: 30
+villager_trades:
+  enabled: false
+  chance: 0.01
+  treasure: true
+applicable_items: CHESTPLATES
+trigger: CONSUME
+target: SELF
+cooldown: 3000
+particle:
+  type: heart
+  count: 5
+  spread: 0.5
+  speed: 0.1
+  location: SELF
+actions:
+  regen:
+    type: potion_effect
+    effect: regeneration
+    duration:
+      base: 20
+      per_level: 20
+    amplifier:
+      base: 0
+      per_level: 1
+    particles: false
+    icon: false

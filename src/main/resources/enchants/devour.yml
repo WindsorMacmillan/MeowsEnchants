@@ -1,0 +1,34 @@
+name: "<gradient:#FF00BF:dark_red>暴食"
+max_level: 3
+anvil_cost: 2
+enchanting_table:
+  enabled: true
+  chance: 0.01
+  min_cost: 30
+  max_cost: 30
+villager_trades:
+  enabled: false
+  chance: 0.01
+  treasure: true
+applicable_items: WEAPON
+trigger: KILL_ENTITY
+target: ALL_ENTITIES
+cooldown: 5000
+sound:
+  type: entity.generic.eat
+  volume: 1.0
+  pitch: 1.0
+particle:
+  type: item
+  count: 5
+  spread: 0.5
+  speed: 1.0
+  location: SELF
+  data:
+    material: "minecraft:beef"
+actions:
+  feed:
+    type: feast
+    amount:
+      base: 0.2
+      per_level: 0.2

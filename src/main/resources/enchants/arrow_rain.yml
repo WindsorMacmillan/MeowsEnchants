@@ -1,0 +1,31 @@
+name: "<gradient:#CFCFCF:#00D4FF>箭雨"
+max_level: 5
+anvil_cost: 2
+enchanting_table:
+  enabled: true
+  chance: 0.01
+  min_cost: 30
+  max_cost: 30
+villager_trades:
+  enabled: false
+  chance: 0.01
+  treasure: true
+applicable_items: RANGED
+trigger: BOW_SHOOT
+target: SELF
+cooldown: 2000
+particle:
+  type: SNOWFLAKE                  # 雪花粒子，表现冰霜质感
+  count: 40                       # 数量适中，形成拖尾
+  spread: 0.5                      # 较小的扩散，让粒子更集中
+  speed: 0.01                      # 较低速度，模拟冰晶飘散
+  location: TARGET                   # 在玩家位置生成
+actions:
+  volley:
+    type: multi_arrow
+    extra_arrows:
+      base: 2
+      per_level: 2
+    spread:
+      base: 15
+      per_level: -2

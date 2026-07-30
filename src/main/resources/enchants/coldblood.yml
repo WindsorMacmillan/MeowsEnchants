@@ -1,0 +1,34 @@
+name: "<gradient:#FF0000:#C72A2A>冷血"
+max_level: 3
+anvil_cost: 2
+enchanting_table:
+  enabled: true
+  chance: 0.01
+  min_cost: 30
+  max_cost: 30
+villager_trades:
+  enabled: false
+  chance: 0.01
+  treasure: true
+applicable_items: WEAPON
+trigger: KILL_ENTITY
+target: SELF
+cooldown: 5000
+particle:
+  type: raid_omen
+  count: 15
+  spread: 0.5
+  speed: 0.01
+  location: SELF
+actions:
+  ruthless:
+    type: potion_effect
+    effect: strength
+    duration:
+      base: 40
+      per_level: 40
+    amplifier:
+      base: 0
+      per_level: 1
+    particles: false
+    icon: false

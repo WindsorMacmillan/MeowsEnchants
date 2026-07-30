@@ -1,0 +1,34 @@
+name: "<gradient:red:dark_red>斩首"
+max_level: 3
+anvil_cost: 2
+enchanting_table:
+  enabled: true
+  chance: 0.01
+  min_cost: 30
+  max_cost: 30
+villager_trades:
+  enabled: false
+  chance: 0.01
+  treasure: true
+applicable_items: SHARP_WEAPON
+trigger: KILL_ENTITY
+target: ALL_ENTITIES
+cooldown: 10000
+sound:
+  type: entity.player.attack.crit
+  volume: 1.0
+  pitch: 1.2
+particle:
+  type: dust_pillar
+  count: 30
+  spread: 0.6
+  speed: 0.1
+  location: TARGET
+  data:
+    material: "minecraft:nether_wart_block"
+actions:
+  head:
+    type: drop_head
+    amount:
+      base: 0.1
+      per_level: 0.1

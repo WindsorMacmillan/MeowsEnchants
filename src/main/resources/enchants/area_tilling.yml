@@ -1,0 +1,22 @@
+name: "<gradient:#FFFF00:#0DFF00>区域犁地"
+max_level: 2
+anvil_cost: 2
+enchanting_table:
+  enabled: true
+  chance: 0.01
+  min_cost: 30
+  max_cost: 30
+villager_trades:
+  enabled: false
+  chance: 0.01
+  treasure: true
+applicable_items: HOES
+trigger: RIGHT_CLICK
+target: SELF
+cooldown: 1000
+actions:
+  farm:
+    type: till
+    radius:
+      base: 1
+      per_level: 1

@@ -1,0 +1,35 @@
+name: "<gradient:#FFEDCF:#78FFFF>反射"
+max_level: 3
+anvil_cost: 2
+enchanting_table:
+  enabled: true
+  chance: 0.01
+  min_cost: 30
+  max_cost: 30
+villager_trades:
+  enabled: false
+  chance: 0.01
+  treasure: true
+applicable_items: EQUIPPABLE
+trigger: TAKE_DAMAGE
+target: ALL_ENTITIES
+cooldown: 10000
+sound:
+  type: block.anvil.land  # Minecraft sound registry name (lowercase, underscored)
+  volume: 0.5                          # Volume (0.0 - 1.0)
+  pitch: 0.5                           # Pitch (0.5 - 2.0)
+particle:
+  type: DUST
+  count: 20
+  spread: 0.6
+  speed: 0.2
+  location: SELF
+  data:
+    color: "#FFD700"
+    size: 1.0
+actions:
+  reflect:
+    type: reflect_damage
+    percentage:
+      base: 0.05
+      per_level: 0.05

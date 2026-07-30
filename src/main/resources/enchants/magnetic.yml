@@ -1,0 +1,23 @@
+name: "<gradient:#FF4A65:#6B4AFF>磁铁"
+max_level: 1
+anvil_cost: 2
+enchanting_table:
+  enabled: true
+  chance: 0.01
+  min_cost: 30
+  max_cost: 30
+villager_trades:
+  enabled: false
+  chance: 0.01
+  treasure: true
+applicable_items: TOOLS
+trigger: BLOCK_BREAK
+target: SELF
+cooldown: 0
+sound:
+  type: entity.item.pickup  # Minecraft sound registry name (lowercase, underscored)
+  volume: 0.5                          # Volume (0.0 - 1.0)
+  pitch: 1.0                           # Pitch (0.5 - 2.0)
+actions:
+  collect:
+    type: vacuum_drops

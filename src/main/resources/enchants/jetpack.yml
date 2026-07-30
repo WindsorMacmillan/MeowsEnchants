@@ -1,0 +1,35 @@
+name: "<gradient:#FFF154:#D8FFB0>喷气弹射"
+max_level: 3
+anvil_cost: 2
+enchanting_table:
+  enabled: true
+  chance: 0.01
+  min_cost: 30
+  max_cost: 30
+villager_trades:
+  enabled: false
+  chance: 0.01
+  treasure: true
+applicable_items: LEGGINGS
+trigger: SNEAK_HOLD
+target: SELF
+cooldown: 5000
+sound:
+  type: entity.ghast.shoot
+  volume: 0.4
+  pitch: 1.5
+particle:
+  type: gust_emitter_large
+  count: 4
+  spread: 0.3
+  speed: 0.5
+  location: SELF
+actions:
+  boost:
+    type: velocity
+    direction: "UP"
+    power:
+      base: 5.0
+      per_level: 1.0
+    apply_to: "SELF"
+    no_fall_damage: true

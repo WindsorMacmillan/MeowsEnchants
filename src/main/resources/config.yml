@@ -1,0 +1,11 @@
+# 如果你在使用Skyllia插件，请启用此项。此功能用于限制附魔仅在空岛保护检查通过后才能生效，并且不会跨岛屿范围生效
+skyllia_compatibility: false
+
+# 附魔台获取附魔机制
+enchanting_table:
+  # 附魔获取考虑玩家等级。启用时，附魔出现的概率将受到玩家等级影响，等级越高越容易出现自定义附魔
+  use_player_level: false
+  # 玩家参照等级。高于此等级时附魔概率将按照比例增加
+  player_level_factor: 500.0
+  # 平衡附魔书的获取概率。启用时，在附魔台附魔书获得自定义附魔的概率只有武器装备的1/4
+  balance_books: false

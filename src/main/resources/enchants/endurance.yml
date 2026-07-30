@@ -1,0 +1,34 @@
+name: "<gradient:#00F7FF:#00FFC3>马拉松"
+max_level: 3
+anvil_cost: 2
+enchanting_table:
+  enabled: true
+  chance: 0.01
+  min_cost: 30
+  max_cost: 30
+villager_trades:
+  enabled: false
+  chance: 0.01
+  treasure: true
+applicable_items: BOOTS
+trigger: SPRINT_HOLD
+target: SELF
+cooldown: 1000
+particle:
+  type: small_gust
+  count: 10
+  spread: 0.5
+  speed: 1.0
+  location: SELF
+actions:
+  longrun:
+    type: potion_effect
+    effect: speed
+    duration:
+      base: 20
+      per_level: 20
+    amplifier:
+      base: 0
+      per_level: 1
+    particles: false
+    icon: false

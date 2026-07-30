@@ -1,0 +1,52 @@
+name: "<gradient:#FFC800:#95FF00>矮人工程师"
+max_level: 1
+anvil_cost: 2
+enchanting_table:
+  enabled: true
+  chance: 0.01
+  min_cost: 30
+  max_cost: 30
+villager_trades:
+  enabled: false
+  chance: 0.01
+  treasure: true
+applicable_items: HELMETS
+trigger: PASSIVE
+target: SELF
+cooldown: 1000
+conflicts:
+  - minecraft:protection
+  - minecraft:fire_protection
+  - minecraft:blast_protection
+  - minecraft:projectile_protection
+actions:
+  small:
+    type: attribute_modifier
+    attribute: "SCALE"
+    amount:
+      base: -0.55
+      per_level: 0
+    operation: "MULTIPLY_SCALAR_1"
+    key: "engineering"
+    conditions:
+      equipped: true
+  longhand:
+    type: attribute_modifier
+    attribute: "BLOCK_INTERACTION_RANGE"
+    amount:
+      base: 1.5
+      per_level: 0
+    operation: "ADD_NUMBER"
+    key: "engineering"
+    conditions:
+      equipped: true
+  weak:
+    type: attribute_modifier
+    attribute: "MAX_HEALTH"
+    amount:
+      base: -0.7
+      per_level: 0
+    operation: "MULTIPLY_SCALAR_1"
+    key: "engineering"
+    conditions:
+      equipped: true

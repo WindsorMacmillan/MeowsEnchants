@@ -1,0 +1,37 @@
+name: "<gradient:#8A97FF:#9EFFFD>破窗器"
+max_level: 1
+anvil_cost: 2
+enchanting_table:
+  enabled: true
+  chance: 0.01
+  min_cost: 30
+  max_cost: 30
+villager_trades:
+  enabled: false
+  chance: 0.01
+  treasure: true
+applicable_items: PICKAXES
+trigger: BLOCK_DIG
+target: SELF
+cooldown: 0
+sound:
+  type: block.glass.break	  # Minecraft sound registry name (lowercase, underscored)
+  volume: 0.5                          # Volume (0.0 - 1.0)
+  pitch: 1.0                           # Pitch (0.5 - 2.0)
+particle:
+  type: dust_pillar
+  count: 10
+  spread: 0.5
+  speed: 1.0
+  location: BLOCK
+  data:
+    material: "minecraft:glass"
+actions:
+  dig_glass:
+    type: block_break
+    target_types:
+      - includes:glass
+      - glowstone
+      - includes:froglight
+      - sea_lantern
+      - redstone_lamp
