@@ -1,29 +1,61 @@
+# Enchantment display name. It may duplicate other enchantment display names, but this is not recommended.
+# Note: this config file name is the enchantment registry name. Do not duplicate another enchantment's registry name.
 # 附魔名称，允许与其他附魔名称重复，但不建议
 # 注意：此配置文件名为附魔注册名，注册不要与其他附魔重复！
 name: "<gradient:#0015FF:#6067AB>锚定"
+
+# Maximum enchantment level. Other plugins can get this directly through the Bukkit API.
 # 附魔最高等级，可以直接被其他插件通过Bukkit API读取
 max_level: 3
+# Base anvil repair level cost. If no plugin removes the cost cap, setting this too high can make the enchantment too expensive to use.
 # 铁砧修复时基础等级开销，如果你没有安装解除cost上限的插件，将此值设置过大会导致此附魔直接过于昂贵
 anvil_cost: 2
 
+# Rules for obtaining this enchantment from the enchanting table.
 # 附魔台获取此附魔的规则
 enchanting_table:
-  enabled: true # 允许此附魔在附魔台监听器随机附魔时出现
-  chance: 0.01 # 原enchanting_table_chance配置项，设定此附魔出现的基础概率
-  min_cost: 30 # 附魔台能出现此附魔的最低cost
-  max_cost: 30 # 附魔台能出现此附魔的最高cost
+  # Allows this enchantment to appear when the enchanting table listener rolls custom enchantments.
+  # 允许此附魔在附魔台监听器随机附魔时出现
+  enabled: true
+  # Sets the base chance for this enchantment to appear.
+  # 设定此附魔出现的基础概率
+  chance: 0.01
+  # Minimum enchanting table cost required for this enchantment to appear.
+  # 附魔台能出现此附魔的最低cost
+  min_cost: 30
+  # Maximum enchanting table cost allowed for this enchantment to appear.
+  # 附魔台能出现此附魔的最高cost
+  max_cost: 30
+# Rules for obtaining this enchantment from villager trades.
 # 村民交易获取此附魔的规则
 villager_trades:
-  enabled: false # 允许此附魔在图书管理员获得附魔书的交易时概率替换原附魔
-  chance: 0.01 # 此附魔被命中的概率
-  treasure: true # 此附魔为宝藏附魔，如果启用则在最终绿宝石价格基础上翻倍
+  # Allows this enchantment to replace the original enchantment when a librarian receives an enchanted book trade.
+  # 允许此附魔在图书管理员获得附魔书的交易时概率替换原附魔
+  enabled: false
+  # Chance for this enchantment to be selected.
+  # 此附魔被命中的概率
+  chance: 0.01
+  # Whether this enchantment is treated as treasury. If enabled, the final emerald price is doubled.
+  # 此附魔为宝藏附魔，如果启用则在最终绿宝石价格基础上翻倍
+  treasure: true
 
+# Item type tag this enchantment can apply to. Available tags:
+# SWORDS / AXES / MACE / TRIDENT / MELEE_WEAPON (swords and spears) / SHARP_WEAPON (swords, spears, and axes)
+# PICKAXES / SHOVELS / HOES / BOW / CROSSBOW / RANGED (bows and crossbows) / FISHING_ROD
+# HELMETS / CHESTPLATES / LEGGINGS / BOOTS / ARMOR (all armor) / WEAPON (swords, spears, axes, and mace)
+
+# TOOLS (axes, pickaxes, shovels, hoes, and shears) / EQUIPPABLE (wearable equipment, including armor and elytra) / ALL (all enchantable items)
 # 附魔可以应用于的物品类型标签。可用的标签有：
 # SWORDS（剑）/AXES（斧）/MACE（重锤）/TRIDENT（三叉戟）/MELEE_WEAPON（剑矛）/SHARP_WEAPON（剑矛斧）
 # PICKAXES（镐）/SHOVELS（锹）/HOES（锄）/BOW（弓）/CROSSBOW（弩）/RANGED（弓弩）/FISHING_ROD（钓鱼竿）
 # HELMETS（头盔）/CHESTPLATES（胸甲）/LEGGINGS（护腿）/BOOTS（靴子）/ARMOR（所有护甲）
 # WEAPON（剑矛斧重锤）/TOOLS（斧镐锹锄剪刀）/EQUIPPABLE（可穿戴装备，包括护甲和鞘翅）/ALL（所有可附魔物品）
 applicable_items: LEGGINGS
+
+# Trigger type for this enchantment. Available tags:
+# ATTACK_ENTITY / KILL_ENTITY / TAKE_DAMAGE / RIGHT_CLICK / BLOCK_BREAK
+# BOW_SHOOT / PROJECTILE_HIT / FISHING / FISH_BITE / PASSIVE / SNEAK / SNEAK_HOLD
+# DEATH / BLOCK_PLACE / RESPAWN / ITEM_SWAP / SHIELD_BLOCK / CONSUME / SPRINT / SPRINT_HOLD
 
 # 附魔触发的时机。可用的标签有：
 # ATTACK_ENTITY（攻击生物）/KILL_ENTITY（击杀生物）/TAKE_DAMAGE（受到伤害）/RIGHT_CLICK（右键）
@@ -33,18 +65,25 @@ applicable_items: LEGGINGS
 # CONSUME（消耗物品）/SPRINT（开始疾跑）/SPRINT_HOLD（持续疾跑）
 trigger: PASSIVE
 
+# Target affected by this enchantment. Some actions force a specific target type. Available types:
+# SELF (self) / PLAYERS (other players) / MOBS (other mobs) / ALL_ENTITIES (all living entities) / NONE (no target, such as blocks)
 # 此附魔生效的目标。部分附魔动作强制目标类型，可用类型有：
 # SELF（自身）/PLAYERS（其他玩家）/MOBS（其他怪物）/ALL_ENTITIES（所有生物）/NONE（无目标，如方块类动作）
 target: SELF
+# Cooldown after this enchantment successfully triggers. If the trigger is PASSIVE, this is the trigger period.
 # 附魔成功触发后的冷却时间。如果触发器为被动PASSIVE则为触发周期
 cooldown: 5000
 
+# Enchantment action list, executed in order.
 # 附魔动作列表，按顺序执行
 actions:
+  # Action name. This is different from the action type name and is used to distinguish different steps of the same action type.
   # 动作名，与动作类型名不一样，用于区分不同步骤但是同种类型的动作
   resist:
+    # Action type. See docs/action_types.
     # 动作类型，见docs/action_types
     type: attribute_modifier
+    # Detailed action parameters.
     # 动作详细参数
     attribute: "KNOCKBACK_RESISTANCE"
     amount:
@@ -53,15 +92,18 @@ actions:
     operation: "ADD_NUMBER"
     key: "anchor"
 
+# Enchantment sound effect
 # 附魔音效
 # sound:
-#   type: entity_experience_orb_pickup  # Minecraft音效注册名，全小写下划线
-#   volume: 1.0                          # 音量 (0.0 - 1.0)
-#   pitch: 1.0                           # 音调 (0.5 - 2.0)
+#   type: entity_experience_orb_pickup  # Minecraft sound registry name. Minecraft音效注册名，全小写下划线
+#   volume: 1.0                          # Volume 音量 (0.0 - 1.0)
+#   pitch: 1.0                           # Pitch 音调 (0.5 - 2.0)
+
+# Particle effect
 # 粒子效果
 # particle:
-#   type: CRIT                  # 粒子效果注册名，全大写
-#   count: 10                   # 粒子数量
-#   spread: 0.5                 # 粒子扩散度
-#   speed: 0.1                  # 粒子播放速度
-#   location: TARGET            # 粒子播放位置: SELF, TARGET, or BLOCK
+#   type: CRIT                  # Particle effect registry name, uppercase. 粒子效果注册名，全大写
+#   count: 10                   # Particle count. 粒子数量
+#   spread: 0.5                 # Particle spread width. 粒子扩散度
+#   speed: 0.1                  # Particle playback speed. 粒子播放速度
+#   location: TARGET            # Particle location. 粒子播放位置: SELF, TARGET, or BLOCK

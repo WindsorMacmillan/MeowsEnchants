@@ -1,8 +1,10 @@
 # MeowsEnchants
 
-MeowsEnchants is a Paper/Folia custom enchantment plugin for declaring custom enchantments in YAML and registering them into the vanilla enchantment registry during the Paper plugin bootstrap phase.
+[English Version](README_EN.md)
 
-## 1. 插件功能简述
+MeowsEnchants 是一个面向 Paper/Folia 的自定义附魔插件，声明式创建自定义附魔并将其注册进原版附魔注册表。
+
+## 1. 功能简述
 
 MeowsEnchants 让自定义附魔像原版附魔一样注册到服务端中，而非传统更多附魔那样通过 NBT、PersistentDataContainer 数据或物品 Lore 伪装成“附魔”。 
 
@@ -22,13 +24,13 @@ MeowsEnchants 让自定义附魔像原版附魔一样注册到服务端中，而
 - Folia：`全功能支持`
 
 
-| 服务端 / 版本                      | 兼容性 | 结论                                                             |
-|-------------------------------|-----|----------------------------------------------------------------|
-| Folia `1.21.11 - 26.2+`       | 支持  | 当前主要目标环境，已按 Folia 调度模型适配                                       |
-| Paper `1.21.11 - 26.2+`       | 支持  | 支持普通 Paper 调度器回退，但仍要求 Paper plugin bootstrapper 与 Registry API |
-| Paper/Folia `1.21.10` 及更低     | 不支持 | 缺少插件使用的实验性API `RegistryComposeEvent` `ItemTypeTagKeys`         |
-| Spigot / CraftBukkit          | 不支持 | 不提供 Paper plugin bootstrapper 与 Paper Registry Mutation API    |
-| Purpur Leaf Leaves 等 Paper 下游 | 支持  | Fork如果完整保留对应实验性 Paper API，则支持此插件                               |
+| 服务端 / 版本                      | 兼容性  | 结论                                                             |
+|-------------------------------|------|----------------------------------------------------------------|
+| Folia `1.21.11 - 26.2+`       | ✅支持  | 当前主要目标环境，已按 Folia 调度模型适配                                       |
+| Paper `1.21.11 - 26.2+`       | ✅支持  | 支持普通 Paper 调度器回退，但仍要求 Paper plugin bootstrapper 与 Registry API |
+| Paper/Folia `1.21.10` 及更低     | ❌不支持 | 缺少插件使用的实验性API `RegistryComposeEvent` `ItemTypeTagKeys`         |
+| Spigot / CraftBukkit          | ❌不支持 | 不提供 Paper plugin bootstrapper 与 Paper Registry Mutation API    |
+| Purpur Leaf Leaves 等 Paper 下游 | ✅支持  | Fork如果完整保留对应实验性 Paper API，则支持此插件                               |
 
 Paper 的 Registry Mutation API 标记为实验性，未来 Paper/Folia 更新可能改变 API 形态，如遇到问题请反馈。
 
