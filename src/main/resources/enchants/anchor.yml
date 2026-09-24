@@ -4,6 +4,16 @@
 # 注意：此配置文件名为附魔注册名，注册不要与其他附魔重复！
 name: "<gradient:#0015FF:#6067AB>锚定"
 
+# 附魔描述，显示在附魔查询页面的lore中，同时支持Bukkit颜色代码和MiniMessage格式标签
+# Enchantment description shown in the enchant browser lore. Supports Bukkit color codes and MiniMessage tags.
+description:
+  - "&f装备后获得额外击退抗性"
+  - "&b冷却：5秒"
+  - "&7可用于：&e护腿"
+  - "&d未超载最高等级：3"
+  - "&7提升等级时："
+  - "&a提高获得的击退抗性"
+
 # Maximum enchantment level. Other plugins can get this directly through the Bukkit API.
 # 附魔最高等级，可以直接被其他插件通过Bukkit API读取
 max_level: 3

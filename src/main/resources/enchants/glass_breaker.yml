@@ -1,4 +1,14 @@
 name: "<gradient:#8A97FF:#9EFFFD>破窗器"
+
+# 附魔描述，显示在附魔查询页面的lore中，同时支持Bukkit颜色代码和MiniMessage格式标签
+# Enchantment description shown in the enchant browser lore. Supports Bukkit color codes and MiniMessage tags.
+description:
+  - "&f可以瞬间破坏所有玻璃类方块"
+  - "&f包含萤石、红石灯、海晶灯、蛙明灯"
+  - "&b冷却：0秒"
+  - "&7可用于：&e镐"
+  - "&d最高等级：1"
+  - "&c此附魔超载提升等级无任何收益"
 max_level: 1
 anvil_cost: 2
 enchanting_table:

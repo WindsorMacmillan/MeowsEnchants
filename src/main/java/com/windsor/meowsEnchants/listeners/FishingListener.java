@@ -2,13 +2,15 @@ package com.windsor.meowsEnchants.listeners;
 
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerFishEvent;
 
 public class FishingListener implements Listener {
 
-    @EventHandler
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
     public void onFishing(PlayerFishEvent event) {
+        if (event.isCancelled()) return;
         Player player = event.getPlayer();
         if (event.getState() == PlayerFishEvent.State.CAUGHT_FISH ||
                 event.getState() == PlayerFishEvent.State.CAUGHT_ENTITY) {

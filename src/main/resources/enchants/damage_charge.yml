@@ -1,4 +1,15 @@
 name: "<gradient:#995EFF:#D900FF>吸收充能"
+
+# 附魔描述，显示在附魔查询页面的lore中，同时支持Bukkit颜色代码和MiniMessage格式标签
+# Enchantment description shown in the enchant browser lore. Supports Bukkit color codes and MiniMessage tags.
+description:
+  - "&f受到攻击时概率获得伤害吸收"
+  - "&b冷却：30秒"
+  - "&7可用于：&e头盔、胸甲、护腿、靴子"
+  - "&d未超载最高等级：1"
+  - "&7提升等级时："
+  - "&a提高触发概率和伤害吸收等级"
+  - "&4冲突附魔：偏转"
 max_level: 1
 anvil_cost: 2
 enchanting_table:

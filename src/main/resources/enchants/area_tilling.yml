@@ -1,4 +1,14 @@
 name: "<gradient:#FFFF00:#0DFF00>区域犁地"
+
+# 附魔描述，显示在附魔查询页面的lore中，同时支持Bukkit颜色代码和MiniMessage格式标签
+# Enchantment description shown in the enchant browser lore. Supports Bukkit color codes and MiniMessage tags.
+description:
+  - "&f犁地作用于目标方块周围方形范围的方块"
+  - "&b冷却：1秒"
+  - "&7可用于：&e锄头"
+  - "&d未超载最高等级：2"
+  - "&7提升等级时："
+  - "&a提高犁地有效范围"
 max_level: 2
 anvil_cost: 2
 enchanting_table:

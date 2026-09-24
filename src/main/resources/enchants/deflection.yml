@@ -1,4 +1,15 @@
 name: "<gradient:#75A5FF:#A175FF>偏转"
+
+# 附魔描述，显示在附魔查询页面的lore中，同时支持Bukkit颜色代码和MiniMessage格式标签
+# Enchantment description shown in the enchant browser lore. Supports Bukkit color codes and MiniMessage tags.
+description:
+  - "&f有概率阻止弹射物命中你"
+  - "&b冷却：4秒"
+  - "&7可用于：&e头盔、胸甲、护腿、靴子"
+  - "&d未超载最高等级：3"
+  - "&7提升等级时："
+  - "&a提高阻止弹射物的概率"
+  - "&4冲突附魔：吸收充能"
 max_level: 3
 anvil_cost: 2
 enchanting_table:

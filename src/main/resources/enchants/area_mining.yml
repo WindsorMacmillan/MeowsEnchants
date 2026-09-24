@@ -1,4 +1,15 @@
 name: "<gradient:#FFFF00:#F76700>区域挖掘"
+
+# 附魔描述，显示在附魔查询页面的lore中，同时支持Bukkit颜色代码和MiniMessage格式标签
+# Enchantment description shown in the enchant browser lore. Supports Bukkit color codes and MiniMessage tags.
+description:
+  - "&f潜行时挖掘目标方块周围方形范围的方块"
+  - "&f破坏的方块需匹配该工具类型"
+  - "&b冷却：3秒"
+  - "&7可用于：&e斧、镐、锹、锄、剪刀"
+  - "&d未超载最高等级：2"
+  - "&7提升等级时："
+  - "&a提高挖掘有效范围"
 max_level: 2
 anvil_cost: 2
 enchanting_table:

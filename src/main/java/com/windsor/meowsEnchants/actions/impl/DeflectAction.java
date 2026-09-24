@@ -24,6 +24,11 @@ public class DeflectAction implements Action {
             return false;
         }
 
+        // 如果伤害已被其他插件取消，不执行反弹
+        if (event.isCancelled()) {
+            return false;
+        }
+
         Entity damager = event.getDamager();
         if (!(damager instanceof Projectile projectile)) {
             return false;

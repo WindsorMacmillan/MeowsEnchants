@@ -1,4 +1,15 @@
 name: "<gradient:#F76700:red>易爆"
+
+# 附魔描述，显示在附魔查询页面的lore中，同时支持Bukkit颜色代码和MiniMessage格式标签
+# Enchantment description shown in the enchant browser lore. Supports Bukkit color codes and MiniMessage tags.
+description:
+  - "&f箭矢命中后产生爆炸"
+  - "&b冷却：5秒"
+  - "&7可用于：&e弓、十字弩"
+  - "&d未超载最高等级：5"
+  - "&7提升等级时："
+  - "&a提高爆炸威力和范围"
+  - "&4冲突附魔：致残"
 max_level: 5
 anvil_cost: 2
 enchanting_table:

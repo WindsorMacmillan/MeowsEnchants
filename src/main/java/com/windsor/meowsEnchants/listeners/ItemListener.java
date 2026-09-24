@@ -4,6 +4,7 @@ import com.windsor.meowsEnchants.MeowsEnchants;
 import com.windsor.meowsEnchants.utils.SchedulerCompat;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerItemConsumeEvent;
 import org.bukkit.event.player.PlayerSwapHandItemsEvent;
@@ -31,8 +32,9 @@ public class ItemListener implements Listener {
         );
     }
 
-    @EventHandler
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
     public void onConsume(PlayerItemConsumeEvent event) {
+        if (event.isCancelled()) return;
         Player player = event.getPlayer();
         EnchantTriggerHelper.checkAndTrigger(player, "CONSUME",
                 EnchantTriggerHelper.getSlotsForTrigger(player),

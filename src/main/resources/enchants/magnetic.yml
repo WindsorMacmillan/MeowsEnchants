@@ -1,4 +1,13 @@
 name: "<gradient:#FF4A65:#6B4AFF>磁铁"
+
+# 附魔描述，显示在附魔查询页面的lore中，同时支持Bukkit颜色代码和MiniMessage格式标签
+# Enchantment description shown in the enchant browser lore. Supports Bukkit color codes and MiniMessage tags.
+description:
+  - "&f手持此工具挖掘时掉落物直接进入背包"
+  - "&b冷却：0秒"
+  - "&7可用于：&e斧、镐、锹、锄、剪刀"
+  - "&d最高等级：1"
+  - "&c此附魔超载提升等级无任何收益"
 max_level: 1
 anvil_cost: 2
 enchanting_table:

@@ -1,4 +1,15 @@
 name: "<gradient:#AB0000:#FF4800>致残"
+
+# 附魔描述，显示在附魔查询页面的lore中，同时支持Bukkit颜色代码和MiniMessage格式标签
+# Enchantment description shown in the enchant browser lore. Supports Bukkit color codes and MiniMessage tags.
+description:
+  - "&f射击命中目标使其迟缓一段时间"
+  - "&b冷却：0秒"
+  - "&7可用于：&e弓、十字弩"
+  - "&d未超载最高等级：3"
+  - "&7提升等级时："
+  - "&a提高迟缓等级和持续时间"
+  - "&4冲突附魔：易爆"
 max_level: 3
 anvil_cost: 2
 enchanting_table:

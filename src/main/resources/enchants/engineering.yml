@@ -1,4 +1,16 @@
 name: "<gradient:#FFC800:#95FF00>矮人工程师"
+
+# 附魔描述，显示在附魔查询页面的lore中，同时支持Bukkit颜色代码和MiniMessage格式标签
+# Enchantment description shown in the enchant browser lore. Supports Bukkit color codes and MiniMessage tags.
+description:
+  - "&f穿戴后体积-55%，方块交互距离+1.5格"
+  - "&f作为代价，你变得脆弱，最大生命-70%"
+  - "&b冷却：1秒"
+  - "&7可用于：&e头盔"
+  - "&d最高等级：1"
+  - "&c此附魔超载提升等级无任何收益"
+  - "&4冲突附魔："
+  - "&4保护、火焰保护、爆炸保护、弹射物保护"
 max_level: 1
 anvil_cost: 2
 enchanting_table:

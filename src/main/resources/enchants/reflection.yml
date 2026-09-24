@@ -1,4 +1,14 @@
 name: "<gradient:#FFEDCF:#78FFFF>反射"
+
+# 附魔描述，显示在附魔查询页面的lore中，同时支持Bukkit颜色代码和MiniMessage格式标签
+# Enchantment description shown in the enchant browser lore. Supports Bukkit color codes and MiniMessage tags.
+description:
+  - "&f概率完全反弹伤害给来源"
+  - "&b冷却：10秒"
+  - "&7可用于：&e头盔、胸甲、护腿、靴子、鞘翅"
+  - "&d未超载最高等级：3"
+  - "&7提升等级时："
+  - "&a提高反弹伤害的概率"
 max_level: 3
 anvil_cost: 2
 enchanting_table:

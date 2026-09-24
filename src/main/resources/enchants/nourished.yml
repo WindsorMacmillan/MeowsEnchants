@@ -1,4 +1,14 @@
 name: "<gradient:#00FF2F:#A2FF00>铁胃"
+
+# 附魔描述，显示在附魔查询页面的lore中，同时支持Bukkit颜色代码和MiniMessage格式标签
+# Enchantment description shown in the enchant browser lore. Supports Bukkit color codes and MiniMessage tags.
+description:
+  - "&f进食后立刻获得生命恢复效果"
+  - "&b冷却：3秒"
+  - "&7可用于：&e胸甲"
+  - "&d未超载最高等级：3"
+  - "&7提升等级时："
+  - "&a提高恢复等级和持续时间"
 max_level: 3
 anvil_cost: 2
 enchanting_table:

@@ -34,6 +34,11 @@ public class HealthstealAction implements Action {
             return false;
         }
 
+        // 如果事件已被取消，不执行偷取
+        if (event.isCancelled()) {
+            return false;
+        }
+
         Player player = context.getPlayer();
         if (player == null) return false;
 

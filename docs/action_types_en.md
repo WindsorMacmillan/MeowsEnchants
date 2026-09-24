@@ -89,6 +89,8 @@ actions:
 ***
 ### teleport
 Teleports the player forward in the direction they're looking.
+The action searches backward from the maximum distance for a safe landing spot with
+standable ground and passable space for the player's feet and head.
 | Parameter | Type            | Required | Default | Description                         |
 | --------- | --------------- | -------- | ------- | ----------------------------------- |
 | `range`   | ScalingFunction | yes      | --      | Maximum teleport distance in blocks |
@@ -121,11 +123,15 @@ actions:
 ***
 ### velocity
 Applies velocity (knockback/launch) to the player or target.
+`onGround` is enabled by default. When enabled, the triggering player must be on
+the ground or within roughly one block of a supporting block. Disable it to allow
+airborne execution. This check applies to both `SELF` and `TARGET`.
 | Parameter        | Type            | Required | Default | Description                                                    |
 | ---------------- | --------------- | -------- | ------- | -------------------------------------------------------------- |
 | `direction`      | string          | yes      | --      | Direction: `UP`, `DOWN`, `FORWARD`, `BACKWARD`, `LOOK`, `AWAY` |
 | `power`          | ScalingFunction | yes      | --      | Velocity magnitude                                             |
 | `apply_to`       | string          | no       | `SELF`  | Who to apply to: `SELF` or `TARGET`                            |
+| `onGround`       | boolean         | no       | `true`  | Require the triggering player to be near the ground            |
 | `no_fall_damage` | boolean         | no       | `false` | Cancel the next fall damage event caused by this launch        |
 **Directions:**
 * `UP` / `DOWN` — absolute vertical
@@ -145,7 +151,9 @@ actions:
 ```
 ***
 ### shockwave
-Pushes nearby entities away from the player.
+Pushes nearby entities away from the player. The target's final
+`minecraft:knockback_resistance` attribute value linearly reduces the impulse from
+0% at resistance 0 to 50% at resistance 1.
 | Parameter | Type            | Required | Default | Description             |
 | --------- | --------------- | -------- | ------- | ----------------------- |
 | `radius`  | ScalingFunction | yes      | --      | Effect radius in blocks |
@@ -257,6 +265,9 @@ actions:
 ***
 ### multi\_arrow
 Shoots additional arrows alongside the main arrow.
+Requires the `BOW_SHOOT` trigger and works with both bows and crossbows; the extra
+arrows inherit critical hits, piercing, fire, potion effects and the firing weapon
+(keeping Power, Flame and similar enchantment bonuses).
 | Parameter      | Type            | Required | Default | Description                  |
 | -------------- | --------------- | -------- | ------- | ---------------------------- |
 | `extra_arrows` | ScalingFunction | yes      | --      | Number of extra arrows       |

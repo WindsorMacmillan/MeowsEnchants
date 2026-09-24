@@ -7,6 +7,8 @@ import com.windsor.meowsEnchants.actions.ScalingFunctionLoader;
 import com.windsor.meowsEnchants.utils.SkylliaCompatibility;
 import org.bukkit.Location;
 import org.bukkit.World;
+import org.bukkit.attribute.Attribute;
+import org.bukkit.attribute.AttributeInstance;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
@@ -25,6 +27,8 @@ public class ShockwaveAction implements Action {
     private static final int MAX_ENTITIES = 64;
     // 限制最大动量，避免过大的碰撞计算
     private static final double MAX_MAGNITUDE = 16.0;
+    // 击退抗性为 1 时最多减免 50% 最终动量
+    private static final double MAX_KNOCKBACK_REDUCTION = 0.5;
 
     public ShockwaveAction(Map<String, Object> params) {
         Object radiusObj = params.get("radius");
@@ -69,6 +73,7 @@ public class ShockwaveAction implements Action {
         double maxPower = Math.min(pow, MAX_MAGNITUDE);
 
         for (Entity entity : sortedEntities) {
+            LivingEntity livingEntity = (LivingEntity) entity;
             Location entityLoc = entity.getLocation();
             double distance = playerLoc.distance(entityLoc);
             if (distance > rad) continue;
@@ -83,6 +88,7 @@ public class ShockwaveAction implements Action {
             }
             // 二次限制，防止个别极端值
             magnitude = Math.min(magnitude, MAX_MAGNITUDE);
+            magnitude *= getKnockbackMultiplier(livingEntity);
 
             Vector horizontal = entityLoc.toVector().subtract(playerLoc.toVector());
             horizontal.setY(0);
@@ -98,6 +104,16 @@ public class ShockwaveAction implements Action {
             entity.setVelocity(velocity);
         }
         return true;
+    }
+
+    private double getKnockbackMultiplier(LivingEntity entity) {
+        AttributeInstance resistanceAttribute = entity.getAttribute(Attribute.KNOCKBACK_RESISTANCE);
+        if (resistanceAttribute == null) {
+            return 1.0;
+        }
+
+        double resistance = Math.clamp(resistanceAttribute.getValue(), 0.0, 1.0);
+        return 1.0 - resistance * MAX_KNOCKBACK_REDUCTION;
     }
 
 }

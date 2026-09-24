@@ -2,7 +2,6 @@ package com.windsor.meowsEnchants.config;
 
 import io.papermc.paper.registry.RegistryKey;
 import io.papermc.paper.registry.TypedKey;
-import io.papermc.paper.registry.event.RegistryComposeEvent;
 import io.papermc.paper.registry.keys.tags.ItemTypeTagKeys;
 import io.papermc.paper.registry.set.RegistryKeySet;
 import io.papermc.paper.registry.set.RegistrySet;
@@ -22,6 +21,7 @@ import org.slf4j.Logger;
 public class EnchantConfig {
     private final String id;
     private final String displayName;
+    private final List<String> description;
     private final int maxLevel;
     private final int anvilCost;
     private final String applicableItem;
@@ -125,6 +125,7 @@ public class EnchantConfig {
     // ---- 构造方法 ----
     public EnchantConfig(@NotNull String id,
                          @NotNull String displayName,
+                         @Nullable List<String> description,
                          int maxLevel,
                          int anvilCost,
                          @Nullable String applicableItem,
@@ -139,6 +140,7 @@ public class EnchantConfig {
                          @Nullable VillagerTradeConfig villagerTradeConfig) {
         this.id = id;
         this.displayName = displayName;
+        this.description = description != null ? List.copyOf(description) : Collections.emptyList();
         this.maxLevel = maxLevel;
         this.anvilCost = anvilCost;
         this.applicableItem = applicableItem;
@@ -160,6 +162,8 @@ public class EnchantConfig {
     // ---- Getters ----
     public @NotNull String getId() { return id; }
     public @NotNull String getDisplayName() { return displayName; }
+    public @NotNull List<String> getDescription() { return description; }
+    public @Nullable String getApplicableItem() { return applicableItem; }
     public int getMaxLevel() { return maxLevel; }
     public int getAnvilCost() { return anvilCost; }
     public double getEnchantingTableChance() { return enchantingTableConfig.getChance(); }
@@ -174,8 +178,8 @@ public class EnchantConfig {
     public @Nullable SoundConfig getSoundConfig() { return soundConfig; }
     public @Nullable ParticleConfig getParticleConfig() { return particleConfig; }
 
-    // ---- 延迟解析方法（在注册事件中调用） ----
-    public void resolveSound(RegistryComposeEvent<?, ?> event) {
+    // ---- 延迟解析方法（注册或重新加载配置后调用） ----
+    public void resolveSound() {
         if (soundData == null || logger == null) return;
         String typeStr = (String) soundData.get("type");
         if (typeStr == null) return;
@@ -189,7 +193,7 @@ public class EnchantConfig {
         this.soundConfig = new SoundConfig(sound, volume, pitch);
     }
 
-    public void resolveParticle(RegistryComposeEvent<?, ?> event) {
+    public void resolveParticle() {
         if (particleData == null || logger == null) return;
         String typeStr = (String) particleData.get("type");
         if (typeStr == null) return;

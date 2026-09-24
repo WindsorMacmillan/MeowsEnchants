@@ -1,4 +1,14 @@
 name: "<gradient:#FF00BF:dark_red>暴食"
+
+# 附魔描述，显示在附魔查询页面的lore中，同时支持Bukkit颜色代码和MiniMessage格式标签
+# Enchantment description shown in the enchant browser lore. Supports Bukkit color codes and MiniMessage tags.
+description:
+  - "&f击杀生物时概率恢复1点饱食度和饱和度"
+  - "&b冷却：5秒"
+  - "&7可用于：&e剑、长矛、斧头、重锤"
+  - "&d未超载最高等级：3"
+  - "&7提升等级时："
+  - "&a提高触发恢复的概率"
 max_level: 3
 anvil_cost: 2
 enchanting_table:

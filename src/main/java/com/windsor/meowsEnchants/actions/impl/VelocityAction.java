@@ -23,7 +23,9 @@ public class VelocityAction implements Action {
     private final ScalingFunction power;
     private final String applyTo;
     private final boolean noFallDamage;
+    private final boolean onGround;
 
+    private static final int MAX_GROUND_DISTANCE = 1;
     private static final ConcurrentHashMap<UUID, Long> fallDamageProtection = new ConcurrentHashMap<>();
 
     public VelocityAction(Map<String, Object> params) {
@@ -41,6 +43,8 @@ public class VelocityAction implements Action {
 
         this.applyTo = params.containsKey("apply_to") ? params.get("apply_to").toString().toUpperCase() : "SELF";
         this.noFallDamage = params.containsKey("no_fall_damage") && (boolean) params.get("no_fall_damage");
+        Object onGroundObj = params.containsKey("onGround") ? params.get("onGround") : params.get("on_ground");
+        this.onGround = onGroundObj == null || Boolean.parseBoolean(onGroundObj.toString());
     }
 
     @Override
@@ -48,6 +52,7 @@ public class VelocityAction implements Action {
         try {
             Player player = context.getPlayer();
             if (player == null) return false;
+            if (onGround && !isWithinGroundDistance(player)) return false;
 
             // 确定应用目标
             List<Entity> targets = context.getTargets();
@@ -56,10 +61,6 @@ public class VelocityAction implements Action {
             Entity applyEntity;
             if (applyTo.equalsIgnoreCase("SELF")) {
                 applyEntity = player;
-                // 玩家必须在地面才能触发
-                if (!isPlayerOnGround(player)) {
-                    return false;
-                }
             } else { // TARGET
                 if (targetEntity == null) return false;
                 applyEntity = targetEntity;
@@ -141,23 +142,20 @@ public class VelocityAction implements Action {
         return directionVector.multiply(powerValue);
     }
 
-    /**
-     * 检查玩家是否站在地面上（脚部或下方方块非空气）。
-     */
-    private boolean isPlayerOnGround(Player player) {
-        Location loc = player.getLocation();
-        int blockX = loc.getBlockX();
-        int blockY = loc.getBlockY(); // 脚部所在Y
-        int blockZ = loc.getBlockZ();
-        World world = loc.getWorld();
+    private boolean isWithinGroundDistance(Player player) {
+        if (player.isOnGround()) return true;
+
+        Location location = player.getLocation();
+        World world = location.getWorld();
         if (world == null) return false;
-        // 检查脚部方块和下方方块（最多下探1格）
-        for (int yOffset = 0; yOffset <= 1; yOffset++) {
-            int checkY = blockY - yOffset;
-            if (checkY < world.getMinHeight()) continue;
-            if (!world.getBlockAt(blockX, checkY, blockZ).isEmpty()) {
-                return true;
-            }
+
+        int blockX = location.getBlockX();
+        int blockZ = location.getBlockZ();
+        int feetBlockY = location.getBlockY();
+        for (int distance = 1; distance <= MAX_GROUND_DISTANCE; distance++) {
+            int supportY = feetBlockY - distance;
+            if (supportY < world.getMinHeight()) return false;
+            if (!world.getBlockAt(blockX, supportY, blockZ).isPassable()) return true;
         }
         return false;
     }

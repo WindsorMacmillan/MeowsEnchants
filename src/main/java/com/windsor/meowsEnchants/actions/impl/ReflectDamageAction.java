@@ -32,6 +32,11 @@ public class ReflectDamageAction implements Action {
             return false;
         }
 
+        // 如果事件已被其他插件取消，不执行反弹
+        if (event.isCancelled()) {
+            return false;
+        }
+
         // 只处理近战伤害（排除投射物）
         Entity damager = event.getDamager();
         if (damager instanceof Projectile) {

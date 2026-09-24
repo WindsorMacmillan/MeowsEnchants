@@ -109,6 +109,24 @@ Enchantment config file path:
 plugins/MeowsEnchants/enchants/<enchant_id>.yml
 ```
 
+### Enchantment Browser
+
+Run `/enchants` in game to open the enchantment browser (a 6-row chest GUI):
+
+- The middle slot of the first row accepts the item to inspect and lists the custom enchantments that item supports; an enchanted book or an empty slot lists every enchantment.
+- Rows 2-5 show enchantment books sorted by supported item tag and enchantment name, using the `name` and `description` fields from the config.
+- Enchantments the inspected item already has are shown as knowledge books; the border colour indicates the item category: yellow for tools, red for weapons, blue for armour, black otherwise.
+- When more than 36 enchantments match, the last row shows previous/next page buttons with the arrow amount set to the target page number.
+
+Every enchantment config supports a `description` string list rendered as lore in the browser, supporting both Bukkit colour codes and MiniMessage tags:
+
+```yaml
+description:
+  - "&fGrants additional knockback resistance"
+  - "&bCooldown: 5s"
+  - "&7Applies to: &eleggings"
+```
+
 ## 5. Building
 
 This project uses Maven. Dependencies are resolved from the PaperMC Maven repository and the PlaceholderAPI repository.  

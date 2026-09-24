@@ -1,4 +1,14 @@
 name: "<gradient:#ACA3FF:#A3A3A3>蹲防"
+
+# 附魔描述，显示在附魔查询页面的lore中，同时支持Bukkit颜色代码和MiniMessage格式标签
+# Enchantment description shown in the enchant browser lore. Supports Bukkit color codes and MiniMessage tags.
+description:
+  - "&f持续潜行获得抗性提升"
+  - "&b冷却：1秒"
+  - "&7可用于：&e胸甲"
+  - "&d未超载最高等级：3"
+  - "&7提升等级时："
+  - "&a提高抗性持续时间"
 max_level: 3
 anvil_cost: 2
 enchanting_table:

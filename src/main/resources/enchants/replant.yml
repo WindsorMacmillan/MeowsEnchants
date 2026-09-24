@@ -1,4 +1,14 @@
 name: "<gradient:#DDFF00:#00FF00>催熟补种"
+
+# 附魔描述，显示在附魔查询页面的lore中，同时支持Bukkit颜色代码和MiniMessage格式标签
+# Enchantment description shown in the enchant browser lore. Supports Bukkit color codes and MiniMessage tags.
+description:
+  - "&f手持工具收割作物时自动消耗作物补种"
+  - "&f并且自动消耗5个骨粉催熟作物"
+  - "&b冷却：0秒"
+  - "&7可用于：&e锄头"
+  - "&d最高等级：1"
+  - "&c此附魔超载提升等级无任何收益"
 max_level: 1
 anvil_cost: 2
 enchanting_table:

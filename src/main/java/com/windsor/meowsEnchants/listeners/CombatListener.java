@@ -13,8 +13,13 @@ import java.util.List;
 
 public class CombatListener implements Listener {
 
-    @EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
+    /**
+     * 攻击实体触发器：使用 MONITOR 优先级确保在所有保护插件处理后，
+     * 若事件未被取消才触发附魔，避免附魔效果在事件被取消后仍生效。
+     */
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
     public void onAttackEntity(EntityDamageByEntityEvent event) {
+        if (event.isCancelled()) return;
         if (!(event.getDamager() instanceof Player player)) return;
         if (event.getCause() != EntityDamageByEntityEvent.DamageCause.ENTITY_ATTACK &&
                 event.getCause() != EntityDamageByEntityEvent.DamageCause.PROJECTILE) return;
@@ -36,16 +41,24 @@ public class CombatListener implements Listener {
                 event, null);
     }
 
-    @EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
+    /**
+     * 受到伤害触发器：使用 MONITOR 优先级，理由同上。
+     */
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
     public void onTakeDamage(EntityDamageByEntityEvent event) {
+        if (event.isCancelled()) return;
         if (!(event.getEntity() instanceof Player player)) return;
         EnchantTriggerHelper.checkAndTrigger(player, "TAKE_DAMAGE",
                 EnchantTriggerHelper.getSlotsForTrigger(player),
                 event, null);
     }
 
-    @EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
+    /**
+     * 盾牌格挡触发器：使用 MONITOR 优先级，理由同上。
+     */
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
     public void onShieldBlock(EntityDamageByEntityEvent event) {
+        if (event.isCancelled()) return;
         if (!(event.getEntity() instanceof Player player)) return;
         if (!player.isBlocking()) return;
         EnchantTriggerHelper.checkAndTrigger(player, "SHIELD_BLOCK",

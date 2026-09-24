@@ -1,4 +1,14 @@
 name: "<gradient:#00FFC3:#00FF40>助跑跳"
+
+# 附魔描述，显示在附魔查询页面的lore中，同时支持Bukkit颜色代码和MiniMessage格式标签
+# Enchantment description shown in the enchant browser lore. Supports Bukkit color codes and MiniMessage tags.
+description:
+  - "&f持续跑步后获得跳跃提升"
+  - "&b冷却：1秒"
+  - "&7可用于：&e靴子"
+  - "&d未超载最高等级：3"
+  - "&7提升等级时："
+  - "&a提升跳跃等级和持续时间"
 max_level: 3
 anvil_cost: 2
 enchanting_table:

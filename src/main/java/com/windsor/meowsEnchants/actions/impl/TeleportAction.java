@@ -79,7 +79,7 @@ public class TeleportAction implements Action {
         for (int yOffset = 0; yOffset <= 4; yOffset++) {
             int checkY = baseY - yOffset;
             if (checkY < world.getMinHeight()) continue;
-            if (!world.getBlockAt(baseX, checkY, baseZ).isEmpty()) return true;
+            if (!world.getBlockAt(baseX, checkY, baseZ).isPassable()) return true;
         }
         return false;
     }
@@ -90,8 +90,8 @@ public class TeleportAction implements Action {
         int blockX = loc.getBlockX();
         int blockZ = loc.getBlockZ();
         int blockY = loc.getBlockY();
-        if (!world.getBlockAt(blockX, blockY, blockZ).isEmpty()) return false;
+        if (!world.getBlockAt(blockX, blockY, blockZ).isPassable()) return false;
         if (blockY + 1 > world.getMaxHeight()) return false;
-        return world.getBlockAt(blockX, blockY + 1, blockZ).isEmpty();
+        return world.getBlockAt(blockX, blockY + 1, blockZ).isPassable();
     }
 }

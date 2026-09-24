@@ -1,4 +1,15 @@
 name: "<gradient:#00FFFF:#70CBFF>速度"
+
+# 附魔描述，显示在附魔查询页面的lore中，同时支持Bukkit颜色代码和MiniMessage格式标签
+# Enchantment description shown in the enchant browser lore. Supports Bukkit color codes and MiniMessage tags.
+description:
+  - "&f穿戴后获得额外基础移速"
+  - "&b冷却：1秒"
+  - "&7可用于：&e靴子"
+  - "&d未超载最高等级：3"
+  - "&7提升等级时："
+  - "&a提高装备基础移速"
+  - "&4冲突附魔：灵魂疾行"
 max_level: 3
 anvil_cost: 2
 enchanting_table:

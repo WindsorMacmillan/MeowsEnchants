@@ -5,6 +5,7 @@ import org.bukkit.NamespacedKey;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Projectile;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityShootBowEvent;
 import org.bukkit.event.entity.ProjectileHitEvent;
@@ -17,8 +18,9 @@ public class ProjectileListener implements Listener {
     // 用于标记投射物的 NamespacedKey
     private static final NamespacedKey EXPLOSION_MARKER = new NamespacedKey(MeowsEnchants.getInstance(), "explosion_arrow");
 
-    @EventHandler
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
     public void onBowShoot(EntityShootBowEvent event) {
+        if (event.isCancelled()) return;
         if (!(event.getEntity() instanceof Player player)) return;
         if (!(event.getProjectile() instanceof Projectile projectile)) return;
 
@@ -34,10 +36,16 @@ public class ProjectileListener implements Listener {
             PersistentDataContainer pdc = projectile.getPersistentDataContainer();
             pdc.set(EXPLOSION_MARKER, PersistentDataType.BOOLEAN, true);
         }
+
+        // 触发 BOW_SHOOT 附魔（弓与弩均会触发 EntityShootBowEvent，因此两者都生效）
+        EnchantTriggerHelper.checkAndTrigger(player, "BOW_SHOOT",
+                EnchantTriggerHelper.getSlotsForTrigger(player),
+                event, projectile);
     }
 
-    @EventHandler
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
     public void onProjectileHit(ProjectileHitEvent event) {
+        if (event.isCancelled()) return;
         if (!(event.getEntity().getShooter() instanceof Player player)) return;
         EnchantTriggerHelper.checkAndTrigger(player, "PROJECTILE_HIT",
                 EnchantTriggerHelper.getSlotsForTrigger(player),

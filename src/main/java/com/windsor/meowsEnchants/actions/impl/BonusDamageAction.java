@@ -70,6 +70,11 @@ public class BonusDamageAction implements Action {
             return false;
         }
 
+        // 如果事件已被其他插件取消，不执行伤害修改
+        if (event.isCancelled()) {
+            return false;
+        }
+
         // ---- 条件检查 ----
         if (sneaking && !player.isSneaking()) {
             return false;

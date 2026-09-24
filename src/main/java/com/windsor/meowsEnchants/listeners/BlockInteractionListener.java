@@ -7,9 +7,11 @@ import org.bukkit.Material;
 import org.bukkit.Tag;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
+import org.bukkit.event.Event;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
+import org.bukkit.event.block.Action;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
@@ -82,8 +84,9 @@ public class BlockInteractionListener implements Listener {
         // 箱子等已加入
     }
 
-    @EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
     public void onLeftClickBlock(PlayerInteractEvent event) {
+        if (event.isCancelled()) return;
         if (event.getAction() != org.bukkit.event.block.Action.LEFT_CLICK_BLOCK) return;
         // 防止在方块被破坏后仍触发（但在 LEFT_CLICK_BLOCK 时方块还在）
         Player player = event.getPlayer();
@@ -101,8 +104,9 @@ public class BlockInteractionListener implements Listener {
                 event, block); // extra 为 Block 对象
     }
 
-    @EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
     public void onBlockBreak(BlockBreakEvent event) {
+        if (event.isCancelled()) return;
         // 如果 MultiBreakAction 正在处理中，跳过附魔触发，防止递归
         if (MultiBreakAction.isProcessing()) {
             return;
@@ -113,38 +117,35 @@ public class BlockInteractionListener implements Listener {
                 event, null);
     }
 
-    @EventHandler
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
     public void onBlockPlace(BlockPlaceEvent event) {
+        if (event.isCancelled()) return;
         Player player = event.getPlayer();
         EnchantTriggerHelper.checkAndTrigger(player, "BLOCK_PLACE",
                 EnchantTriggerHelper.getSlotsForTrigger(player),
                 event, null);
     }
 
-    // 处理空中右键：ignoreCancelled = false（默认），允许被取消的事件仍触发
-    @EventHandler
-    public void onRightClickAir(PlayerInteractEvent event) {
-        if (event.getAction() != org.bukkit.event.block.Action.RIGHT_CLICK_AIR) return;
+    /**
+     * 处理右键触发器。
+     *
+     * PlayerInteractEvent.isCancelled() 只反映 useInteractedBlock()，右键空气时该状态
+     * 通常天然为取消；因此不能用 isCancelled() 判断是否应触发附魔。
+     */
+    @EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = false)
+    public void onRightClick(PlayerInteractEvent event) {
+        Action action = event.getAction();
+        if (action != Action.RIGHT_CLICK_AIR && action != Action.RIGHT_CLICK_BLOCK) return;
         if (TillAction.isProcessing()) return;
-        Player player = event.getPlayer();
-        EnchantTriggerHelper.checkAndTrigger(player, "RIGHT_CLICK",
-                EnchantTriggerHelper.getSlotsForTrigger(player),
-                event, null);
-    }
-
-    // 处理方块右键：ignoreCancelled = true，高优先级，确保保护插件先处理
-    @EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
-    public void onRightClickBlock(PlayerInteractEvent event) {
-        if (event.getAction() != org.bukkit.event.block.Action.RIGHT_CLICK_BLOCK) return;
-        if (TillAction.isProcessing()) return;
+        if (event.useItemInHand() == Event.Result.DENY) return;
 
         Player player = event.getPlayer();
-        Block block = event.getClickedBlock();
-        ItemStack item = player.getInventory().getItemInMainHand();
 
-        // 检查是否应忽略该交互
-        if (shouldIgnoreInteraction(block, item)) {
-            return;
+        if (action == Action.RIGHT_CLICK_BLOCK) {
+            Block block = event.getClickedBlock();
+            if (shouldIgnoreInteraction(block, event.getItem())) {
+                return;
+            }
         }
 
         EnchantTriggerHelper.checkAndTrigger(player, "RIGHT_CLICK",

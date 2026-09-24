@@ -1,4 +1,15 @@
 name: "<gradient:#FFB300:#A2FF00>速建速拆"
+
+# 附魔描述，显示在附魔查询页面的lore中，同时支持Bukkit颜色代码和MiniMessage格式标签
+# Enchantment description shown in the enchant browser lore. Supports Bukkit color codes and MiniMessage tags.
+description:
+  - "&f将工具和方块置于主副手时放置方块"
+  - "&f能持续获得急迫效果"
+  - "&b冷却：1秒"
+  - "&7可用于：&e斧、镐、锹、锄、剪刀"
+  - "&d未超载最高等级：3"
+  - "&7提升等级时："
+  - "&a提升急迫等级和持续时间"
 max_level: 3
 anvil_cost: 2
 enchanting_table:

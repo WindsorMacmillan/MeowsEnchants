@@ -1,4 +1,14 @@
 name: "<gradient:#FFA600:#BA3E00>厚实表皮"
+
+# 附魔描述，显示在附魔查询页面的lore中，同时支持Bukkit颜色代码和MiniMessage格式标签
+# Enchantment description shown in the enchant browser lore. Supports Bukkit color codes and MiniMessage tags.
+description:
+  - "&f每隔一段时间获得伤害吸收"
+  - "&b冷却：30秒"
+  - "&7可用于：&e头盔"
+  - "&d未超载最高等级：2"
+  - "&7提升等级时："
+  - "&a提高吸收等级和持续时间"
 max_level: 2
 anvil_cost: 2
 enchanting_table:
